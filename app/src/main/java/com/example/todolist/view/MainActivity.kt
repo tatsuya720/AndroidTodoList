@@ -5,7 +5,9 @@ import android.os.Bundle
 import com.example.list.view.ListFragment
 import com.example.todolist.R
 import com.example.todolist.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

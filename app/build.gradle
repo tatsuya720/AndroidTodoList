@@ -51,4 +51,7 @@ dependencies {
     kapt libs.hilt.compiler
 
     implementation project(":list")
+    implementation project(":edit")
+    implementation project(":common")
+    implementation project(":navigator")
 }

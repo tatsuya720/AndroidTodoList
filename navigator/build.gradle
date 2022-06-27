@@ -29,16 +29,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    viewBinding {
-        enabled = true
-    }
 }
 
 dependencies {
 
     implementation project(":common")
-    implementation project(":navigator")
 
     implementation libs.core.ktx
     implementation libs.appcompat
@@ -50,5 +45,4 @@ dependencies {
 
     implementation libs.hilt
     kapt libs.hilt.compiler
-
 }

@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.model.data.TodoData
 import com.example.list.databinding.FragmentTodoListBinding
+import com.example.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment: Fragment() {
+    @Inject lateinit var navigator: Navigator
 
     companion object {
         fun newInstance(): ListFragment {
@@ -41,6 +44,7 @@ class ListFragment: Fragment() {
 
         adapter = TodoListAdapter {
             println("タップTODO")
+            navigator.showEditFeature(it)
         }
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

@@ -35,6 +35,7 @@ class ListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        println("ListFragment onCreateView")
         _binding = FragmentTodoListBinding.inflate(inflater)
         return binding?.root
     }

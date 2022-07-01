@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.edit.R
 import com.example.edit.databinding.FragmentTodoEditBinding
 import com.example.edit.viewModel.TodoEditViewModel
+import com.example.navigator.Navigator
 import javax.inject.Inject
 
 class TodoEdit : Fragment() {
@@ -19,6 +20,9 @@ class TodoEdit : Fragment() {
     }
 
     val viewModel by viewModels<TodoEditViewModel>()
+
+    @Inject lateinit var navigator: Navigator
+
     private var _binding: FragmentTodoEditBinding? = null
     private val binding get() = _binding
 
@@ -32,6 +36,11 @@ class TodoEdit : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        _binding?.toolBar?.setNavigationOnClickListener {
+            println("navigationOnClickListener")
+            navigator.closeEditFeature()
+        }
     }
 
     override fun onDestroy() {

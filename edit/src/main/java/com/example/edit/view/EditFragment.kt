@@ -14,10 +14,6 @@ import javax.inject.Inject
 
 class EditFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EditFragment()
-    }
-
     val viewModel by viewModels<TodoEditViewModel>()
 
     @Inject lateinit var navigator: Navigator

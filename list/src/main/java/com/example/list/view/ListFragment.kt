@@ -18,14 +18,6 @@ import javax.inject.Inject
 class ListFragment: Fragment() {
     @Inject lateinit var navigator: Navigator
 
-    companion object {
-        fun newInstance(): ListFragment {
-            return ListFragment().also {
-
-            }
-        }
-    }
-
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding
     private lateinit var adapter: TodoListAdapter
@@ -45,7 +37,7 @@ class ListFragment: Fragment() {
 
         adapter = TodoListAdapter {
             println("タップTODO")
-            navigator.showEditFeature(it)
+            navigator.showEditFeature(requireActivity(), it)
         }
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

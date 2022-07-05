@@ -29,8 +29,9 @@ dependencyResolutionManagement {
             version("navigation-version", "2.5.0")
             alias("navigation-fragment-ktx").to("androidx.navigation","navigation-fragment-ktx").versionRef("navigation-version")
             alias("navigation-ui-ktx").to("androidx.navigation","navigation-ui-ktx").versionRef("navigation-version")
-
             bundle("navigation", ["navigation-fragment-ktx", "navigation-ui-ktx"])
+
+            alias("navigation-safe-args").to("androidx.navigation", "navigation-safe-args-gradle-plugin").versionRef("navigation-version")
         }
     }
 }

@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/list_fragment"
         android:name="com.example.list.view.ListFragment"
-        tools:layout="@layout/fragment_todo_list">
+        >
 
         <action
             android:id="@+id/action_show_edit"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/edit_fragment"
         android:name="com.example.edit.view.EditFragment"
-        tools:layout="@layout/fragment_todo_edit">
+        >
 
         <argument
             android:name="editTodoData"

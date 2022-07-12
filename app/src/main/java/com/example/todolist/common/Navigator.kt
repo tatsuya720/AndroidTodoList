@@ -22,7 +22,8 @@ class NavigatorImpl @Inject constructor(
         activity.findNavController(R.id.nav_host_fragment).navigate(action)
     }
 
-    override fun closeEditFeature() {
+    override fun closeEditFeature(activity: FragmentActivity) {
         println("closeEditFeature")
+        activity.findNavController(R.id.nav_host_fragment).popBackStack()
     }
 }

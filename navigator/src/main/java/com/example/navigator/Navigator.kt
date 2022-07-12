@@ -6,5 +6,5 @@ import com.example.common.model.data.TodoData
 interface Navigator {
     fun showListFeature()
     fun showEditFeature(activity: FragmentActivity, todoData: TodoData)
-    fun closeEditFeature()
+    fun closeEditFeature(activity: FragmentActivity)
 }

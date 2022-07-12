@@ -26,6 +26,14 @@ dependencyResolutionManagement {
             alias("hilt").to("com.google.dagger:hilt-android:2.40.5")
             alias("hilt-compiler").to("com.google.dagger:hilt-android-compiler:2.40.5")
             alias("fragment-ktx").to("androidx.fragment:fragment-ktx:1.2.2")
+            alias("activity-ktx").to("androidx.activity", "activity-ktx").version("1.4.0")
+            alias("coroutine").to("org.jetbrains.kotlinx","kotlinx-coroutines-android").version("1.3.9")
+            alias("viewModel-ktx").to("androidx.lifecycle","lifecycle-viewmodel-ktx").version("2.5.0")
+
+            version("room-version", "2.4.2")
+            alias("room-runtime").to("androidx.room","room-runtime").versionRef("room-version")
+            alias("room-ktx").to("androidx.room", "room-ktx").versionRef("room-version")
+            alias("room-compiler").to("androidx.room","room-compiler").versionRef("room-version")
 
             version("navigation-version", "2.5.0")
             alias("navigation-fragment-ktx").to("androidx.navigation","navigation-fragment-ktx").versionRef("navigation-version")

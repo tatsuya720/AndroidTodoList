@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.todolist"
-        minSdk 23
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -47,6 +47,10 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.junit.ext
     androidTestImplementation libs.espresso
+
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    annotationProcessor libs.room.compiler
 
     implementation libs.hilt
     kapt libs.hilt.compiler

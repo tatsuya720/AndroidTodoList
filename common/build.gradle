@@ -2,13 +2,15 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdk 32
 
     defaultConfig {
-        minSdk 23
+        minSdk 24
         targetSdk 32
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -39,4 +41,12 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.junit.ext
     androidTestImplementation libs.espresso
+
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    kapt libs.room.compiler
+
+    implementation libs.hilt
+    kapt libs.hilt.compiler
+
 }

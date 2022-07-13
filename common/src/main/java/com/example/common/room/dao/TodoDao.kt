@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface TodoDao {
 
     @Insert
-    suspend fun insert(todoData: TodoData)
+    suspend fun insert(todoData: TodoData): Long
 
     @Update
     suspend fun update(todoData: TodoData)

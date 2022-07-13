@@ -4,7 +4,7 @@ import com.example.common.model.data.TodoData
 import kotlinx.coroutines.flow.Flow
 
 interface TodoDataRepository {
-    suspend fun insert(todoData: TodoData)
+    suspend fun insert(todoData: TodoData):Long
 
     suspend fun update(todoData: TodoData)
 

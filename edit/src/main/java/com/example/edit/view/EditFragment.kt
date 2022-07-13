@@ -48,6 +48,7 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
         //表示さえせるデータが渡されている場合
         args.editTodoData?.let { todoData ->
+            viewModel.setTodoData(todoData)
             binding?.editTitle?.setText(todoData.title)
             binding?.editDescription?.setText(todoData.description)
 
@@ -55,6 +56,7 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val limitDateStr = sdf.format(todoData.limitDate)
             binding?.editLimitDate?.setText(limitDateStr)
         } ?: run {
+            viewModel.setTodoData(TodoData(0, "", "", Date()))
             binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = false
 
             val sdf = SimpleDateFormat("yyyy/MM/dd")
@@ -64,27 +66,37 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
         //期限タップイベント
         binding?.editLimitDate?.setOnClickListener {
-            setOnClickLimitDate(args.editTodoData?.limitDate)
+            setOnClickLimitDate(viewModel.todoData?.limitDate)
         }
 
         binding?.titleBar?.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.action_save -> {
-                    saveTodoData(createAddTodoData())
+                    val title = binding?.editTitle?.text.toString()
+                    val description = binding?.editDescription?.text.toString()
+
+                    val limitDate = binding?.editLimitDate?.let { dateEditText ->
+                        val sdf = SimpleDateFormat("yyyy/MM/dd")
+                        sdf.parse(dateEditText.text.toString())
+                    } ?: Date()
+
+                    saveTodoData(title = title, description = description, limitDate = limitDate)
                 }
                 R.id.action_delete -> {
                     //データがある場合のみ処理
-                    args.editTodoData?.let { todoData ->
-                        deleteTodoData(todoData)
-                        closeEditFeature()
-                    }
+                    deleteTodoData()
+                    closeEditFeature()
                 }
             }
             false
         }
 
         //保存完了スナックバー表示
-        viewModel.completedSave.observe(viewLifecycleOwner) {
+        viewModel.completedSaveId.observe(viewLifecycleOwner) {
+            //ちゃんと登録されていれば削除ボタンを表示
+            if(it != 0L ) {
+                binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = true
+            }
             Snackbar.make(requireView(), resources.getText(R.string.edit_saved), Snackbar.LENGTH_SHORT).show()
         }
     }
@@ -104,29 +116,14 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding?.editLimitDate?.setText(selectDateStr)
     }
 
-    private fun closeEditFeature() = navigator.closeEditFeature(requireActivity())
+    private fun closeEditFeature()
+        = navigator.closeEditFeature(requireActivity())
 
-    private fun saveTodoData(todoData: TodoData) = viewModel.saveTodoData(todoData = todoData)
+    private fun saveTodoData(title:String, description:String, limitDate: Date = Date())
+        = viewModel.saveTodoData(title, description, limitDate)
 
-    private fun deleteTodoData(todoData: TodoData) = viewModel.deleteTodoData(todoData = todoData)
-
-    private fun createAddTodoData(): TodoData {
-        val title = binding?.editTitle?.text.toString()
-        val description = binding?.editDescription?.text.toString()
-
-        val limitDate = binding?.editLimitDate?.let {
-            val sdf = SimpleDateFormat("yyyy/MM/dd")
-            sdf.parse(it.text.toString())
-        } ?: Date()
-
-        //既存のものの書き換えならidをつかう
-        //新規なら0
-        val id = args.editTodoData?.let {
-            it.id
-        } ?: 0
-
-        return TodoData(id, title, description, limitDate = limitDate)
-    }
+    private fun deleteTodoData()
+        = viewModel.deleteTodoData()
 
     private fun setOnClickLimitDate(limitDate: Date?) {
         val calendar = Calendar.getInstance()

@@ -10,8 +10,8 @@ class TodoDataRepositoryImpl @Inject constructor(
     private val todoDao: TodoDao
 ): TodoDataRepository {
 
-    override suspend fun insert(todoData: TodoData) {
-        todoDao.insert(todoData)
+    override suspend fun insert(todoData: TodoData):Long {
+        return todoDao.insert(todoData)
     }
 
     override suspend fun update(todoData: TodoData) {

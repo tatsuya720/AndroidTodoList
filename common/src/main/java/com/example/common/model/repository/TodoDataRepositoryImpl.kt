@@ -24,5 +24,4 @@ class TodoDataRepositoryImpl @Inject constructor(
 
     override fun getAll(): Flow<List<TodoData>> = todoDao.getAll()
 
-//    override suspend fun getTodo(id: Long): Flow<TodoData> = todoDao.getTodo(id)
 }

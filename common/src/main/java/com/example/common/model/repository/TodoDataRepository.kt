@@ -11,6 +11,4 @@ interface TodoDataRepository {
     suspend fun delete(todoData: TodoData)
 
     fun getAll(): Flow<List<TodoData>>
-//
-//    suspend fun getTodo(id: Long): Flow<TodoData>
 }

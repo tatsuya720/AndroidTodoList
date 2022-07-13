@@ -16,7 +16,11 @@ class EditViewModel @Inject constructor(
     fun saveTodoData(todoData: TodoData) {
         println("保存開始")
         viewModelScope.launch {
-            todoDataRepository.insert(todoData)
+            if(todoData.id == 0L) {
+                todoDataRepository.insert(todoData = todoData)
+            } else {
+                todoDataRepository.update(todoData = todoData)
+            }
             println("保存終了")
         }
     }

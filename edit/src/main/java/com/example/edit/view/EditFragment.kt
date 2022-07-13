@@ -94,17 +94,11 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding?.editLimitDate?.setText(selectDateStr)
     }
 
-    private fun closeEditFeature() {
-        navigator.closeEditFeature(requireActivity())
-    }
+    private fun closeEditFeature() = navigator.closeEditFeature(requireActivity())
 
-    private fun saveTodoData(todoData: TodoData) {
-        viewModel.saveTodoData(todoData = todoData)
-    }
+    private fun saveTodoData(todoData: TodoData) = viewModel.saveTodoData(todoData = todoData)
 
-    private fun deleteTodoData(todoData: TodoData) {
-        viewModel.deleteTodoData(todoData = todoData)
-    }
+    private fun deleteTodoData(todoData: TodoData) = viewModel.deleteTodoData(todoData = todoData)
 
     private fun createAddTodoData(): TodoData {
         val title = binding?.editTitle?.text.toString()
@@ -115,7 +109,13 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             sdf.parse(it.text.toString())
         } ?: Date()
 
-        return TodoData(0, title, description, limitDate = limitDate)
+        //既存のものの書き換えならidをつかう
+        //新規なら0
+        val id = args.editTodoData?.let {
+            it.id
+        } ?: 0
+
+        return TodoData(id, title, description, limitDate = limitDate)
     }
 
     private fun setOnClickLimitDate(limitDate: Date?) {

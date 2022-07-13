@@ -53,6 +53,8 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val sdf = SimpleDateFormat("yyyy/MM/dd")
             val limitDateStr = sdf.format(todoData.limitDate)
             binding?.editLimitDate?.setText(limitDateStr)
+        } ?: run {
+            binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = false
         }
 
         //期限タップイベント

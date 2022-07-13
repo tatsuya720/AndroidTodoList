@@ -5,5 +5,6 @@
     <string name="edit_title">タイトル</string>
     <string name="edit_description">詳細</string>
     <string name="edit_limit_date">期限</string>
+    <string name="edit_saved">保存しました</string>
 
 </resources>

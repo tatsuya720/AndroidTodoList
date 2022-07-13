@@ -13,6 +13,7 @@ import com.example.edit.R
 import com.example.edit.databinding.FragmentTodoEditBinding
 import com.example.edit.viewModel.EditViewModel
 import com.example.navigator.Navigator
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -69,19 +70,22 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding?.titleBar?.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.action_save -> {
-                    println("保存ボタンクリック")
                     saveTodoData(createAddTodoData())
                 }
                 R.id.action_delete -> {
                     //データがある場合のみ処理
                     args.editTodoData?.let { todoData ->
-                        println("削除ボタンクリック")
                         deleteTodoData(todoData)
                         closeEditFeature()
                     }
                 }
             }
             false
+        }
+
+        //保存完了スナックバー表示
+        viewModel.completedSave.observe(viewLifecycleOwner) {
+            Snackbar.make(requireView(), resources.getText(R.string.edit_saved), Snackbar.LENGTH_SHORT).show()
         }
     }
 

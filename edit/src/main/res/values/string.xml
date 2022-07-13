@@ -2,4 +2,8 @@
 <resources>
     <string name="add">新規作成</string>
     <string name="edit">編集</string>
+    <string name="edit_title">タイトル</string>
+    <string name="edit_description">詳細</string>
+    <string name="edit_limit_date">期限</string>
+
 </resources>

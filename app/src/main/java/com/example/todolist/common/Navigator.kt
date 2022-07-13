@@ -16,7 +16,7 @@ class NavigatorImpl @Inject constructor(
         println("showListFeature")
     }
 
-    override fun showEditFeature(activity: FragmentActivity, todoData: TodoData) {
+    override fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) {
         println("showEditFeature")
         val action = ListFragmentDirections.actionShowEdit(editTodoData = todoData)
         activity.findNavController(R.id.nav_host_fragment).navigate(action)

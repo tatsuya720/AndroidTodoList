@@ -24,7 +24,8 @@
 
         <argument
             android:name="editTodoData"
-            app:argType="com.example.common.model.data.TodoData" />
+            app:argType="com.example.common.model.data.TodoData"
+            app:nullable="true" />
 
     </fragment>
 

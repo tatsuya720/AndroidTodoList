@@ -5,19 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.model.data.TodoData
 import com.example.list.databinding.FragmentTodoListBinding
+import com.example.list.viewModel.ListViewModel
 import com.example.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment: Fragment() {
     @Inject lateinit var navigator: Navigator
 
+    private val viewModel by viewModels<ListViewModel>()
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding
     private lateinit var adapter: TodoListAdapter
@@ -27,7 +33,6 @@ class ListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("ListFragment onCreateView")
         _binding = FragmentTodoListBinding.inflate(inflater)
         return binding?.root
     }
@@ -36,41 +41,25 @@ class ListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = TodoListAdapter {
-            println("タップTODO")
-            navigator.showEditFeature(requireActivity(), it)
+            showEditFeature(requireActivity(), it)
         }
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding?.recyclerView?.addItemDecoration( DividerItemDecoration(context, LinearLayoutManager(context).orientation))
 
-        //サンプル
-        adapter.submitList(
-            listOf(
-                TodoData(id=0, title = "ああああ", description = "説明説明説明"),
-                TodoData(id=1, title = "いいいい", description = "説明説明説明"),
-                TodoData(id=2, title = "うううう", description = "説明説明説明"),
-                TodoData(id=3, title = "ええええ", description = "説明説明説明"),
-                TodoData(id=4, title = "おおおお", description = "説明説明説明"),
-                TodoData(id=5, title = "かかかか", description = "説明説明説明"),
-                TodoData(id=6, title = "きききき", description = "説明説明説明"),
-                TodoData(id=7, title = "くくくく", description = "説明説明説明"),
-                TodoData(id=8, title = "けけけけ", description = "説明説明説明"),
-                TodoData(id=8, title = "ここここ", description = "説明説明説明"),
-                TodoData(id=5, title = "ささささ", description = "説明説明説明"),
-                TodoData(id=6, title = "しししし", description = "説明説明説明"),
-                TodoData(id=7, title = "すすすす", description = "説明説明説明"),
-                TodoData(id=8, title = "せせせせ", description = "説明説明説明"),
-                TodoData(id=8, title = "そそそそ", description = "説明説明説明"),
-                TodoData(id=5, title = "たたたた", description = "説明説明説明"),
-                TodoData(id=6, title = "ちちちち", description = "説明説明説明"),
-                TodoData(id=7, title = "つつつつ", description = "説明説明説明"),
-                TodoData(id=8, title = "てててて", description = "説明説明説明"),
-                TodoData(id=8, title = "とととと", description = "説明説明説明"),
-            )
-        )
+        viewModel.todoData.observe(this.viewLifecycleOwner) { list ->
+            adapter.submitList(list)
+        }
+
+        lifecycle.coroutineScope.launch {
+            viewModel.getAllData().collect() {
+                adapter.submitList(it)
+            }
+        }
 
         binding?.floatingActionButton?.setOnClickListener {
             println("追加")
+            showEditFeature(requireActivity(), null)
         }
     }
 
@@ -78,5 +67,7 @@ class ListFragment: Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+    private fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) = navigator.showEditFeature(activity = activity, todoData = todoData)
 
 }

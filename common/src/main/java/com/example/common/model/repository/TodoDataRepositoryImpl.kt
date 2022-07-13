@@ -22,7 +22,7 @@ class TodoDataRepositoryImpl @Inject constructor(
         todoDao.delete(todoData)
     }
 
-//    override suspend fun getAll(): Flow<List<TodoData>> = todoDao.getAll()
-//
+    override fun getAll(): Flow<List<TodoData>> = todoDao.getAll()
+
 //    override suspend fun getTodo(id: Long): Flow<TodoData> = todoDao.getTodo(id)
 }

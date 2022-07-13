@@ -10,7 +10,7 @@ interface TodoDataRepository {
 
     suspend fun delete(todoData: TodoData)
 
-//    suspend fun getAll(): Flow<List<TodoData>>
+    fun getAll(): Flow<List<TodoData>>
 //
 //    suspend fun getTodo(id: Long): Flow<TodoData>
 }

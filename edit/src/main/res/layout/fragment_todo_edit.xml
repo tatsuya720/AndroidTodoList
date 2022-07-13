@@ -54,24 +54,6 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="@string/edit_description"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"/>
-
-        <EditText
-            android:id="@+id/edit_description"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:hint="@string/edit_description"
-            android:gravity="top"
-            android:layout_gravity="center"
-            android:inputType="textMultiLine"
-            android:lines="100"/>
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
             android:text="@string/edit_limit_date"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -87,6 +69,26 @@
             android:clickable="true"
             android:focusable="false"
             />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_description"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edit_description"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:hint="@string/edit_description"
+            android:gravity="top"
+            android:layout_gravity="center"
+            android:inputType="textMultiLine"
+            android:lines="100"
+            />
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

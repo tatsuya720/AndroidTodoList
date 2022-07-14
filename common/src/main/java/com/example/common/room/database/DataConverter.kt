@@ -1,6 +1,7 @@
 package com.example.common.room.database
 
 import androidx.room.TypeConverter
+import com.example.common.model.data.TodoState
 import java.util.*
 
 class DataConverter {
@@ -12,5 +13,15 @@ class DataConverter {
     @TypeConverter
     fun dateToTimestamp(date: Date): Long {
         return date.time
+    }
+
+    @TypeConverter
+    fun fromTodoStateInt(value: Int): TodoState {
+        return TodoState.find(value) ?: TodoState.NotComplete
+    }
+
+    @TypeConverter
+    fun TodoStateToInt(todoState: TodoState): Int {
+        return todoState.value
     }
 }

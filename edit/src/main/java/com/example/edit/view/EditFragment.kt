@@ -9,6 +9,7 @@ import android.widget.DatePicker
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.common.model.data.TodoData
+import com.example.common.model.data.TodoState
 import com.example.edit.R
 import com.example.edit.databinding.FragmentTodoEditBinding
 import com.example.edit.viewModel.EditViewModel
@@ -56,7 +57,7 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val limitDateStr = sdf.format(todoData.limitDate)
             binding?.editLimitDate?.setText(limitDateStr)
         } ?: run {
-            viewModel.setTodoData(TodoData(0, "", "", Date()))
+            viewModel.setTodoData(TodoData(0, "", "", Date(), TodoState.NotComplete))
             binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = false
 
             val sdf = SimpleDateFormat("yyyy/MM/dd")

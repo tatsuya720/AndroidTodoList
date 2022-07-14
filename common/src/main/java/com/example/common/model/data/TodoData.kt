@@ -12,5 +12,17 @@ data class TodoData (
     @PrimaryKey(autoGenerate = true) val id: Long,
     val title: String,
     val description: String,
-    val limitDate: Date
+    val limitDate: Date,
+    val todoState: TodoState,
 ): Parcelable
+
+enum class TodoState(val value: Int) {
+    NotComplete(0),
+    Complete(1);
+
+    companion object {
+        fun find(value: Int): TodoState? {
+            return values().find { it.value == value}
+        }
+    }
+}

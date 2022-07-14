@@ -64,7 +64,6 @@ class ListFragment: Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val adapter = binding?.recyclerView?.adapter as TodoListAdapter
                 val todoListViewHolder = viewHolder as TodoListAdapter.ViewHolder
                 todoListViewHolder.deleteItem()
             }

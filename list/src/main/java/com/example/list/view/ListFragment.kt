@@ -8,15 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.example.common.model.data.TodoData
 import com.example.list.databinding.FragmentTodoListBinding
 import com.example.list.viewModel.ListViewModel
 import com.example.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,25 +37,49 @@ class ListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = TodoListAdapter {
-            showEditFeature(requireActivity(), it)
-        }
+        adapter = TodoListAdapter(
+            onClick = {
+                showEditFeature(requireActivity(), it)
+            },
+            onCompleteCheckClick = {
+                viewModel.setTodoState(it)
+            },
+            {
+                viewModel.deleteTodo(it)
+            }
+        )
+
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding?.recyclerView?.addItemDecoration( DividerItemDecoration(context, LinearLayoutManager(context).orientation))
 
-        viewModel.todoData.observe(this.viewLifecycleOwner) { list ->
-            adapter.submitList(list)
-        }
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
 
-        lifecycle.coroutineScope.launch {
-            viewModel.getAllData().collect() {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = binding?.recyclerView?.adapter as TodoListAdapter
+                val todoListViewHolder = viewHolder as TodoListAdapter.ViewHolder
+                todoListViewHolder.deleteItem()
+            }
+        })
+
+        itemTouchHelper.attachToRecyclerView(binding?.recyclerView)
+
+        lifecycle.coroutineScope.launchWhenResumed {
+            viewModel.list.collect {
                 adapter.submitList(it)
             }
+
         }
 
         binding?.floatingActionButton?.setOnClickListener {
-            println("追加")
             showEditFeature(requireActivity(), null)
         }
     }

@@ -2,7 +2,6 @@
 .gradle
 /local.properties
 .idea/
-.idea/misc.xml
 .idea/deploymentTargetDropDown.xml
 !/.idea/codeStyles/
 !/.idea/runConfiguration/
@@ -12,3 +11,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+.idea/misc.xml

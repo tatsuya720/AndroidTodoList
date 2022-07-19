@@ -1,9 +1,12 @@
 package com.example.list.view
 
+import android.graphics.*
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -16,9 +19,11 @@ import com.example.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
-class ListFragment: Fragment() {
-    @Inject lateinit var navigator: Navigator
+class ListFragment : Fragment() {
+    @Inject
+    lateinit var navigator: Navigator
 
     private val viewModel by viewModels<ListViewModel>()
     private var _binding: FragmentTodoListBinding? = null
@@ -50,24 +55,112 @@ class ListFragment: Fragment() {
         )
 
         binding?.recyclerView?.adapter = adapter
-        binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding?.recyclerView?.addItemDecoration( DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+        binding?.recyclerView?.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding?.recyclerView?.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayoutManager(context).orientation
+            )
+        )
 
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
+        val itemTouchHelper =
+            ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
 
-                return false
-            }
+                    return false
+                }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val todoListViewHolder = viewHolder as TodoListAdapter.ViewHolder
-                todoListViewHolder.deleteItem()
-            }
-        })
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val todoListViewHolder = viewHolder as TodoListAdapter.ViewHolder
+                    todoListViewHolder.deleteItem()
+                }
+
+                override fun onChildDraw(
+                    c: Canvas,
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    dX: Float,
+                    dY: Float,
+                    actionState: Int,
+                    isCurrentlyActive: Boolean
+                ) {
+                    super.onChildDraw(
+                        c,
+                        recyclerView,
+                        viewHolder,
+                        dX,
+                        dY,
+                        actionState,
+                        isCurrentlyActive
+                    )
+
+                    val itemView = viewHolder.itemView
+
+                    if (dX == 0f && !isCurrentlyActive) {
+                        clearCanvas(
+                            c,
+                            itemView.right + dX.toInt(),
+                            itemView.top,
+                            itemView.right,
+                            itemView.bottom
+                        )
+                        super.onChildDraw(
+                            c,
+                            recyclerView,
+                            viewHolder,
+                            dX,
+                            dY,
+                            actionState,
+                            false
+                        )
+                        return
+                    }
+
+                    //スワイプ分の領域を赤で塗りつぶす
+                    val background = ColorDrawable()
+                    background.color = Color.RED
+                    background.setBounds(
+                        itemView.right + dX.toInt(),
+                        itemView.top,
+                        itemView.right,
+                        itemView.bottom
+                    )
+                    background.draw(c)
+
+                    context?.let {
+                        val icon = ContextCompat.getDrawable(it, com.example.common.R.drawable.ic_baseline_delete_forever_24)
+                        icon?.let { drawble ->
+                            val iconMargin = (itemView.height - drawble.intrinsicHeight) / 2
+                            val iconTop = itemView.top + iconMargin
+                            val iconLeft = itemView.right - iconMargin - drawble.intrinsicHeight
+                            val iconRight = itemView.right - iconMargin
+                            val iconBottom = iconTop + drawble.intrinsicHeight
+
+                            drawble.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                            drawble.draw(c)
+                        }
+                    }
+
+
+                }
+
+                private fun clearCanvas(c: Canvas, left: Int, top: Int, right: Int, bottom: Int) {
+                    val paint = Paint()
+                    paint.setXfermode(PorterDuffXfermode(PorterDuff.Mode.CLEAR))
+                    c.drawRect(
+                        left.toFloat(),
+                        top.toFloat(),
+                        right.toFloat(),
+                        bottom.toFloat(),
+                        paint
+                    )
+                }
+            })
 
         itemTouchHelper.attachToRecyclerView(binding?.recyclerView)
 
@@ -88,6 +181,7 @@ class ListFragment: Fragment() {
         _binding = null
     }
 
-    private fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) = navigator.showEditFeature(activity = activity, todoData = todoData)
+    private fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) =
+        navigator.showEditFeature(activity = activity, todoData = todoData)
 
 }

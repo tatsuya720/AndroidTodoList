@@ -134,15 +134,15 @@ class ListFragment : Fragment() {
 
                     context?.let {
                         val icon = ContextCompat.getDrawable(it, com.example.common.R.drawable.ic_baseline_delete_forever_24)
-                        icon?.let { drawble ->
-                            val iconMargin = (itemView.height - drawble.intrinsicHeight) / 2
+                        icon?.let { drawable ->
+                            val iconMargin = (itemView.height - drawable.intrinsicHeight) / 2
                             val iconTop = itemView.top + iconMargin
-                            val iconLeft = itemView.right - iconMargin - drawble.intrinsicHeight
+                            val iconLeft = itemView.right - iconMargin - drawable.intrinsicHeight
                             val iconRight = itemView.right - iconMargin
-                            val iconBottom = iconTop + drawble.intrinsicHeight
+                            val iconBottom = iconTop + drawable.intrinsicHeight
 
-                            drawble.setBounds(iconLeft, iconTop, iconRight, iconBottom)
-                            drawble.draw(c)
+                            drawable.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                            drawable.draw(c)
                         }
                     }
 

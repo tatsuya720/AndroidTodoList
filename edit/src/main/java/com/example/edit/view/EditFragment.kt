@@ -108,8 +108,7 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             set(year, month, day)
         }.time
 
-        val sdf = SimpleDateFormat("yyyy/MM/dd")
-        val selectDateStr = sdf.format(selectDate)
+        val selectDateStr = selectDate.formattyyyMMdd()
         binding?.editLimitDate?.setText(selectDateStr)
     }
 

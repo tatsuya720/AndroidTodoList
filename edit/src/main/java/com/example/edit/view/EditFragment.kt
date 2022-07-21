@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.widget.DatePicker
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.common.ext.parseDate
+import com.example.common.ext.formattyyyMMdd
 import com.example.common.model.data.TodoData
 import com.example.common.model.data.TodoState
 import com.example.edit.R
@@ -53,15 +55,13 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             binding?.editTitle?.setText(todoData.title)
             binding?.editDescription?.setText(todoData.description)
 
-            val sdf = SimpleDateFormat("yyyy/MM/dd")
-            val limitDateStr = sdf.format(todoData.limitDate)
+            val limitDateStr = todoData.limitDate.formattyyyMMdd()
             binding?.editLimitDate?.setText(limitDateStr)
         } ?: run {
             viewModel.setTodoData(TodoData(0, "", "", Date(), TodoState.NotComplete))
             binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = false
 
-            val sdf = SimpleDateFormat("yyyy/MM/dd")
-            val limitDateStr = sdf.format(Date())
+            val limitDateStr = Date().formattyyyMMdd()
             binding?.editLimitDate?.setText(limitDateStr)
         }
 
@@ -75,11 +75,7 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 R.id.action_save -> {
                     val title = binding?.editTitle?.text.toString()
                     val description = binding?.editDescription?.text.toString()
-
-                    val limitDate = binding?.editLimitDate?.let { dateEditText ->
-                        val sdf = SimpleDateFormat("yyyy/MM/dd")
-                        sdf.parse(dateEditText.text.toString())
-                    } ?: Date()
+                    val limitDate = binding?.editLimitDate?.text?.toString()?.parseDate() ?: Date()
 
                     saveTodoData(title = title, description = description, limitDate = limitDate)
                 }

@@ -7,9 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.common.ext.formattyyyMMdd
 import com.example.common.model.data.TodoData
 import com.example.common.model.data.TodoState
 import com.example.list.databinding.TodoListItemBinding
+import java.text.SimpleDateFormat
 
 class TodoListAdapter(
     private val onClick: (TodoData) -> Unit,
@@ -54,6 +56,8 @@ class TodoListAdapter(
             currentData = todoData
             binding.textView.text = todoData.title
             binding.completeCheck.isChecked = todoData.todoState == TodoState.Complete
+
+            binding.limitDate.text = todoData.limitDate.formattyyyMMdd()
             setTextViewStrikethrough(binding.textView, binding.completeCheck.isChecked)
         }
 

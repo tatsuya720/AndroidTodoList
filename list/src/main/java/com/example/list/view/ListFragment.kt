@@ -66,6 +66,41 @@ class ListFragment : Fragment() {
             )
         )
 
+        settingItemTouchHelper()
+
+        lifecycle.coroutineScope.launchWhenResumed {
+            viewModel.list.collect {
+                adapter.submitList(it)
+            }
+
+        }
+
+        binding?.floatingActionButton?.setOnClickListener {
+            showEditFeature(requireActivity(), null)
+        }
+
+        binding?.titleBar?.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.date_near -> {
+                    viewModel.getList(ListViewModel.SortType.LimitDateAsc)
+                }
+                R.id.date_far -> {
+                    viewModel.getList(ListViewModel.SortType.LimitDateDesc)
+                }
+            }
+            false
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    private fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) =
+        navigator.showEditFeature(activity = activity, todoData = todoData)
+
+    private fun settingItemTouchHelper() {
         val itemTouchHelper =
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
                 override fun onMove(
@@ -165,25 +200,5 @@ class ListFragment : Fragment() {
             })
 
         itemTouchHelper.attachToRecyclerView(binding?.recyclerView)
-
-        lifecycle.coroutineScope.launchWhenResumed {
-            viewModel.list.collect {
-                adapter.submitList(it)
-            }
-
-        }
-
-        binding?.floatingActionButton?.setOnClickListener {
-            showEditFeature(requireActivity(), null)
-        }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    private fun showEditFeature(activity: FragmentActivity, todoData: TodoData?) =
-        navigator.showEditFeature(activity = activity, todoData = todoData)
-
 }

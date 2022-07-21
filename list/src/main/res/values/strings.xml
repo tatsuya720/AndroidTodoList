@@ -1,2 +1,4 @@
 <resources>
+    <string name="sort_near">期限が近い順</string>
+    <string name="sort_far">期限が遠い順</string>
 </resources>

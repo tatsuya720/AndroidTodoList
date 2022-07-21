@@ -1,5 +1,6 @@
 package com.example.list.view
 
+import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.*
 import com.example.common.model.data.TodoData
+import com.example.list.R
 import com.example.list.databinding.FragmentTodoListBinding
 import com.example.list.viewModel.ListViewModel
 import com.example.navigator.Navigator
@@ -121,18 +123,18 @@ class ListFragment : Fragment() {
                         return
                     }
 
-                    //スワイプ分の領域を赤で塗りつぶす
-                    val background = ColorDrawable()
-                    background.color = Color.RED
-                    background.setBounds(
-                        itemView.right + dX.toInt(),
-                        itemView.top,
-                        itemView.right,
-                        itemView.bottom
-                    )
-                    background.draw(c)
-
                     context?.let {
+                        //スワイプ分の領域を赤で塗りつぶす
+                        val background = ColorDrawable()
+                        background.color = ContextCompat.getColor(it, com.example.common.R.color.red_500)
+                        background.setBounds(
+                            itemView.right + dX.toInt(),
+                            itemView.top,
+                            itemView.right,
+                            itemView.bottom
+                        )
+                        background.draw(c)
+
                         val icon = ContextCompat.getDrawable(it, com.example.common.R.drawable.ic_baseline_delete_forever_24)
                         icon?.let { drawable ->
                             val iconMargin = (itemView.height - drawable.intrinsicHeight) / 2

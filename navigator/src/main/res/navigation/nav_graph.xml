@@ -14,7 +14,10 @@
         <action
             android:id="@+id/action_show_edit"
             app:destination="@id/edit_fragment"
-            />
+            app:enterAnim="@anim/nav_up_enter_anim"
+            app:exitAnim="@anim/nav_up_exit_anim"
+            app:popEnterAnim="@anim/nav_up_pop_enter_anim"
+            app:popExitAnim="@anim/nav_up_pop_exit_anim" />
     </fragment>
 
     <fragment

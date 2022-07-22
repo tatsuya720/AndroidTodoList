@@ -14,4 +14,6 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
 
+    <color name="gray_300">#E0E0E0</color>
+
 </resources>

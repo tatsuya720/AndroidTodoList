@@ -18,7 +18,6 @@ import com.example.edit.viewModel.EditViewModel
 import com.example.navigator.Navigator
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 

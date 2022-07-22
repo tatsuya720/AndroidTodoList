@@ -1,6 +1,5 @@
 package com.example.list.view
 
-import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -59,6 +58,7 @@ class ListFragment : Fragment() {
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
         binding?.recyclerView?.addItemDecoration(
             DividerItemDecoration(
                 context,

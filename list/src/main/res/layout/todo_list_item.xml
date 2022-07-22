@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white">
+        android:background="@color/list_item_background">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -51,7 +51,6 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="titletitletitletiel"
-                    android:textColor="@color/black"
                     android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

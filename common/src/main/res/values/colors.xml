@@ -15,5 +15,10 @@
     <color name="secondaryTextColor">#000000</color>
 
     <color name="gray_300">#E0E0E0</color>
+    <color name="gray_500">#9E9E9E</color>
+
+    <color name="list_item_title">@color/black</color>
+    <color name="list_item_background">@color/white</color>
+    <color name="edit_background">@color/white</color>
 
 </resources>

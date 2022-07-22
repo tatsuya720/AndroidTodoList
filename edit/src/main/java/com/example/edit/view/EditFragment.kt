@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.DatePicker
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.common.ext.parseDate
@@ -56,12 +57,16 @@ class EditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
             val limitDateStr = todoData.limitDate.formattyyyMMdd()
             binding?.editLimitDate?.setText(limitDateStr)
+
+            binding?.titleBar?.title = resources.getText(R.string.edit)
         } ?: run {
             viewModel.setTodoData(TodoData(0, "", "", Date(), TodoState.NotComplete))
             binding?.titleBar?.menu?.findItem(R.id.action_delete)?.isVisible = false
 
             val limitDateStr = Date().formattyyyMMdd()
             binding?.editLimitDate?.setText(limitDateStr)
+
+            binding?.titleBar?.title = resources.getText(R.string.add)
         }
 
         //期限タップイベント

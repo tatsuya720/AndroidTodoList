@@ -4,9 +4,11 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.common.ext.compareCurrentDate
 import com.example.common.ext.formattyyyMMdd
 import com.example.common.model.data.TodoData
 import com.example.common.model.data.TodoState
@@ -58,6 +60,11 @@ class TodoListAdapter(
             binding.completeCheck.isChecked = todoData.todoState == TodoState.Complete
 
             binding.limitDate.text = todoData.limitDate.formattyyyMMdd()
+
+            //期限切れアイコン表示
+            val compareDate = todoData.limitDate.compareCurrentDate()
+            binding.warningIcon.isVisible = (compareDate < 0)
+
             setTextViewStrikethrough(binding.textView, binding.completeCheck.isChecked)
         }
 

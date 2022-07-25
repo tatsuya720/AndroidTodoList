@@ -7,3 +7,10 @@ fun Date.formattyyyMMdd(): String {
     val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN)
     return sdf.format(this)
 }
+
+fun Date.compareCurrentDate(): Long {
+    val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN)
+    val currentDate = sdf.parse(sdf.format(Date()))
+
+    return this.time - currentDate.time
+}

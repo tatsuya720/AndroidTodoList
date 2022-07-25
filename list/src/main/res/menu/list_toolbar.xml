@@ -8,11 +8,11 @@
         app:showAsAction="ifRoom"
         >
         <menu>
-            <item android:id="@+id/date_near"
-                android:title="@string/sort_near" />
+            <item android:id="@+id/date_asc"
+                android:title="@string/sort_limitDay_asc" />
 
-            <item android:id="@+id/date_far"
-                android:title = "@string/sort_far"
+            <item android:id="@+id/date_desc"
+                android:title = "@string/sort_limitDay_desc"
                 />
         </menu>
     </item>

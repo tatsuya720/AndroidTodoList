@@ -81,10 +81,10 @@ class ListFragment : Fragment() {
 
         binding?.titleBar?.setOnMenuItemClickListener {
             when(it.itemId) {
-                R.id.date_near -> {
+                R.id.date_asc -> {
                     viewModel.getList(ListViewModel.SortType.LimitDateAsc)
                 }
-                R.id.date_far -> {
+                R.id.date_desc -> {
                     viewModel.getList(ListViewModel.SortType.LimitDateDesc)
                 }
             }

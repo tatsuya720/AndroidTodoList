@@ -57,28 +57,16 @@ class ListViewModel @Inject constructor(
                 .catch {  }
                 .collect { list ->
 
-                    val diffTimes = mutableListOf<Pair<Long,Long>>()
-                    val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN)
-                    val currentDate = sdf.parse(sdf.format(Date()))
-                    list.forEach { todoData ->
-                        diffTimes.add(Pair(todoData.id, todoData.limitDate.time - currentDate.time))
-                    }
-                    diffTimes.sortBy {
-                        it.second
-                    }
-
-                    if(_sortType == SortType.LimitDateDesc) {
-                        diffTimes.reverse()
-                    }
-
-                    val newList = mutableListOf<TodoData>()
-                    diffTimes.forEach { diffTimeData ->
-                        list.find { it.id ==  diffTimeData.first }?.let {
-                            newList.add(it)
+                    val sortedList = if(_sortType == SortType.LimitDateDesc) {
+                        list.sortedByDescending {
+                            it.limitDate
+                        }
+                    } else {
+                        list.sortedBy {
+                            it.limitDate
                         }
                     }
-
-                    _list.value = newList
+                    _list.value = sortedList
                 }
 
 

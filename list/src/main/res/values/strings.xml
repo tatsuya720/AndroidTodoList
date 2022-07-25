@@ -1,4 +1,4 @@
 <resources>
-    <string name="sort_near">期限が近い順</string>
-    <string name="sort_far">期限が遠い順</string>
+    <string name="sort_limitDay_asc">期限日時 昇順</string>
+    <string name="sort_limitDay_desc">期限日時 降順</string>
 </resources>

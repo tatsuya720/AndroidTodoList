@@ -42,6 +42,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:textSize="20dp"
+            android:textColor="@color/edit_item_title"
             />
 
         <EditText
@@ -51,6 +52,8 @@
             android:hint="@string/edit_title"
             android:inputType="text"
             android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textColorHint="#717171"
             />
 
         <TextView
@@ -60,6 +63,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
+            android:textColor="@color/edit_item_title"
             />
 
         <EditText
@@ -71,6 +75,7 @@
             android:inputType="date"
             android:clickable="true"
             android:focusable="false"
+            android:textColor="@color/black"
             />
 
         <TextView
@@ -80,6 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
+            android:textColor="@color/edit_item_title"
             />
 
         <EditText
@@ -91,6 +97,8 @@
             android:layout_gravity="center"
             android:inputType="textMultiLine"
             android:lines="100"
+            android:textColor="@color/black"
+            android:textColorHint="#717171"
             />
 
 

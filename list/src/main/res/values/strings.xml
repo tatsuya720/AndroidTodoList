@@ -1,4 +1,5 @@
 <resources>
     <string name="sort_limitDay_asc">期限日時 昇順</string>
     <string name="sort_limitDay_desc">期限日時 降順</string>
+    <string name="nothing_item">登録されているタスクがありません。</string>
 </resources>

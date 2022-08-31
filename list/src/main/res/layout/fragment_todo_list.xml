@@ -46,5 +46,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
+    <TextView
+        android:id="@+id/taskNothingMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/nothing_item"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

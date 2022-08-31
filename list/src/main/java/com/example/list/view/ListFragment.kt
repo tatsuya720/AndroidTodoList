@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -56,8 +57,7 @@ class ListFragment : Fragment() {
         )
 
         binding?.recyclerView?.adapter = adapter
-        binding?.recyclerView?.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding?.recyclerView?.addItemDecoration(
             DividerItemDecoration(
@@ -70,9 +70,9 @@ class ListFragment : Fragment() {
 
         lifecycle.coroutineScope.launchWhenResumed {
             viewModel.list.collect {
+                binding?.taskNothingMessage?.isVisible= it.isEmpty()
                 adapter.submitList(it)
             }
-
         }
 
         binding?.floatingActionButton?.setOnClickListener {

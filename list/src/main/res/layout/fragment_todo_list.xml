@@ -52,6 +52,7 @@
         android:layout_height="match_parent"
         android:text="@string/nothing_item"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:gravity="center"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"

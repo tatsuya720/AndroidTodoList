@@ -12,9 +12,9 @@ android {
 
 dependencies {
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    api(libs.core.ktx)
+    api(libs.appcompat)
+    api(libs.material)
     implementation(libs.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)

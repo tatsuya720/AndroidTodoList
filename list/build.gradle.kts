@@ -18,9 +18,6 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":navigator"))
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.coroutine.core)
     implementation(libs.coroutine)

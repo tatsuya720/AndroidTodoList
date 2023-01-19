@@ -14,9 +14,6 @@ dependencies {
 
     implementation(project(":common"))
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.constraintlayout)
     api(libs.bundles.navigation)
     testImplementation(libs.junit)

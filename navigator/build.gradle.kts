@@ -18,7 +18,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
-    implementation(libs.bundles.navigation)
+    api(libs.bundles.navigation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)

@@ -22,7 +22,6 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
-    implementation(libs.bundles.navigation)
     implementation(libs.coroutine.core)
     implementation(libs.coroutine)
     implementation(libs.viewModel.ktx)

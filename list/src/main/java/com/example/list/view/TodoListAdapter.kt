@@ -13,7 +13,6 @@ import com.example.common.ext.formattyyyMMdd
 import com.example.common.model.data.TodoData
 import com.example.common.model.data.TodoState
 import com.example.list.databinding.TodoListItemBinding
-import java.text.SimpleDateFormat
 
 class TodoListAdapter(
     private val onClick: (TodoData) -> Unit,

@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace = "com.example.edit"
     compileSdk = 33
 
     buildFeatures {

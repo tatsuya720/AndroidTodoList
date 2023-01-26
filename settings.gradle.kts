@@ -50,7 +50,7 @@ dependencyResolutionManagement {
 rootProject.name = "TodoList"
 include(":app")
 include(":feature:list")
-include(":edit")
+include(":feature:edit")
 include(":core:data")
 include(":core:domain")
 include(":core:common")

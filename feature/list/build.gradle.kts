@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace = "com.example.list"
     compileSdk = 33
 
     buildFeatures {

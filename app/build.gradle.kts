@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    implementation(project(":list"))
+    implementation(project(":feature:list"))
     implementation(project(":edit"))
     implementation(project(":core:common"))
     implementation(project(":core:data"))

@@ -30,10 +30,6 @@ dependencies {
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)
 
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    annotationProcessor(libs.room.compiler)
-
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 

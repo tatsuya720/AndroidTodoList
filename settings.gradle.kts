@@ -32,7 +32,7 @@ dependencyResolutionManagement {
             library("viewModel-ktx", "androidx.lifecycle","lifecycle-viewmodel-ktx").version("2.5.0")
             library("liveData-ktx", "androidx.lifecycle", "lifecycle-livedata-ktx").version("2.5.0")
 
-            version("room-version", "2.4.2")
+            version("room-version", "2.5.0")
             library("room-runtime", "androidx.room","room-runtime").versionRef("room-version")
             library("room-ktx", "androidx.room", "room-ktx").versionRef("room-version")
             library("room-compiler", "androidx.room","room-compiler").versionRef("room-version")
@@ -49,7 +49,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "TodoList"
 include(":app")
-include(":list")
+include(":feature:list")
 include(":edit")
 include(":core:data")
 include(":core:domain")

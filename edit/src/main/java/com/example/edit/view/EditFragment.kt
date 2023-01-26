@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.common.ext.parseDate
 import com.example.common.ext.formattyyyMMdd
-import com.example.common.model.data.TodoData
-import com.example.common.model.data.TodoState
+import com.example.data.TodoData
+import com.example.data.TodoState
 import com.example.edit.R
 import com.example.edit.databinding.FragmentTodoEditBinding
 import com.example.edit.viewModel.EditViewModel

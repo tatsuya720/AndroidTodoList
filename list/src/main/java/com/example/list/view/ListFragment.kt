@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.*
-import com.example.common.model.data.TodoData
+import com.example.data.TodoData
 import com.example.list.R
 import com.example.list.databinding.FragmentTodoListBinding
 import com.example.list.viewModel.ListViewModel

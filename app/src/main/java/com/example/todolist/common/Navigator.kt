@@ -1,9 +1,8 @@
 package com.example.todolist.common
 
 import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.example.common.model.data.TodoData
+import com.example.data.TodoData
 import com.example.list.view.ListFragmentDirections
 import com.example.navigator.Navigator
 import com.example.todolist.R

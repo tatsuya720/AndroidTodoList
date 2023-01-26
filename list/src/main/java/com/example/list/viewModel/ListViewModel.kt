@@ -2,8 +2,8 @@ package com.example.list.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common.model.data.TodoData
-import com.example.common.model.repository.TodoDataRepository
+import com.example.data.TodoData
+import com.example.domain.repository.TodoDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

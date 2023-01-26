@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.ext.compareCurrentDate
 import com.example.common.ext.formattyyyMMdd
-import com.example.common.model.data.TodoData
-import com.example.common.model.data.TodoState
+import com.example.data.TodoData
+import com.example.data.TodoState
 import com.example.list.databinding.TodoListItemBinding
 
 class TodoListAdapter(

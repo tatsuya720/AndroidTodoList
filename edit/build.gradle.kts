@@ -14,8 +14,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
-    implementation(project(":navigator"))
+    implementation(project(":core:common"))
+    implementation(project(":core:data"))
+    implementation(project(":core:navigator"))
+    implementation(project(":core:domain"))
 
     implementation(libs.constraintlayout)
     implementation(libs.coordinatorlayout)

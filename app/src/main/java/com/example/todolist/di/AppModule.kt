@@ -2,10 +2,10 @@ package com.example.todolist.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.common.model.repository.TodoDataRepository
-import com.example.common.model.repository.TodoDataRepositoryImpl
-import com.example.common.room.dao.TodoDao
-import com.example.common.room.database.AppDatabase
+import com.example.domain.repository.TodoDataRepository
+import com.example.domain.repository.TodoDataRepositoryImpl
+import com.example.database.dao.TodoDao
+import com.example.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

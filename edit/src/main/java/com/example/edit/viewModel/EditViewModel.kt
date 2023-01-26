@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common.model.data.TodoData
-import com.example.common.model.data.TodoState
-import com.example.common.model.repository.TodoDataRepository
+import com.example.data.TodoData
+import com.example.data.TodoState
+import com.example.domain.repository.TodoDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.*

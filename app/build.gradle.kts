@@ -21,7 +21,6 @@ android {
     buildTypes {
         debug {
             isMinifyEnabled = false
-            //minifyEnabled false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -67,6 +66,9 @@ dependencies {
 
     implementation(project(":list"))
     implementation(project(":edit"))
-    implementation(project(":common"))
-    implementation(project(":navigator"))
+    implementation(project(":core:common"))
+    implementation(project(":core:data"))
+    implementation(project(":core:database"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:navigator"))
 }

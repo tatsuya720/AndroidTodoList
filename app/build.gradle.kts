@@ -44,6 +44,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0-rc02"
     }
 }
 
@@ -57,18 +62,27 @@ dependencies {
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)
 
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    annotationProcessor(libs.room.compiler)
+
+
+    //jetpack compose 関連
+    implementation(libs.activity.compose)
+
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    implementation(project(":feature:list"))
-    implementation(project(":feature:edit"))
+    val bom = platform(libs.compose.bom)
+    implementation(bom)
+    androidTestImplementation(bom)
+
+
     implementation(project(":core:common"))
     implementation(project(":core:data"))
     implementation(project(":core:database"))
     implementation(project(":core:domain"))
     implementation(project(":core:navigator"))
+    implementation(project(":core:ui"))
+
+    implementation(project(":feature:list"))
+    implementation(project(":feature:edit"))
 }

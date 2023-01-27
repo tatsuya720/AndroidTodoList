@@ -9,16 +9,36 @@ android {
     namespace = "com.example.list"
     compileSdk = 33
 
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0-rc02"
     }
 }
 
 dependencies {
+
+    val bom = platform(libs.compose.bom)
+    implementation(bom)
+    androidTestImplementation(bom)
+
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
     implementation(project(":core:common"))
     implementation(project(":core:navigator"))
+    implementation(project(":core:ui"))
 
     implementation(libs.constraintlayout)
     implementation(libs.coroutine.core)

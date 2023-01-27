@@ -32,6 +32,11 @@ dependencyResolutionManagement {
             library("viewModel-ktx", "androidx.lifecycle","lifecycle-viewmodel-ktx").version("2.5.0")
             library("liveData-ktx", "androidx.lifecycle", "lifecycle-livedata-ktx").version("2.5.0")
 
+            library("activity-compose", "androidx.activity", "activity-compose").version("1.6.1")
+            library("compose-bom", "androidx.compose", "compose-bom").version("2022.12.00")
+            library("viewModel-compose", "androidx.lifecycle","lifecycle-viewmodel-compose").version("2.5.1")
+            library("navigation-compose", "androidx.navigation", "navigation-compose").version("2.5.3")
+
             version("room-version", "2.5.0")
             library("room-runtime", "androidx.room","room-runtime").versionRef("room-version")
             library("room-ktx", "androidx.room", "room-ktx").versionRef("room-version")
@@ -56,3 +61,4 @@ include(":core:domain")
 include(":core:common")
 include(":core:navigator")
 include(":core:database")
+include(":core:ui")

@@ -11,10 +11,29 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0-rc02"
     }
 }
 
 dependencies {
+
+    val bom = platform(libs.compose.bom)
+    implementation(bom)
+    androidTestImplementation(bom)
+
+    implementation(project(":core:ui"))
     implementation(project(":core:common"))
     implementation(project(":core:data"))
     implementation(project(":core:navigator"))

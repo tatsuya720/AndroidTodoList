@@ -1,5 +1,6 @@
 plugins {
-    id("todoList.android.feature")
+    id("todolist.android.feature")
+    id("todolist.android.library.compose")
     id("dagger.hilt.android.plugin")
 }
 

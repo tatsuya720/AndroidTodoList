@@ -20,8 +20,12 @@ gradlePlugin {
             implementationClass = "AndroidLibraryPlugin"
         }
         register("androidFeature") {
-            id = "todoList.android.feature"
+            id = "todolist.android.feature"
             implementationClass = "AndroidFeaturePlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "todolist.android.library.compose"
+            implementationClass = "AndroidLibraryComposePlugin"
         }
     }
 }

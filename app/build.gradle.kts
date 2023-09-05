@@ -38,12 +38,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        //compose = true
     }
-
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.2.0-rc02"
-//    }
 }
 
 dependencies {
@@ -64,10 +59,6 @@ dependencies {
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
-
-//    val bom = platform(libs.compose.bom)
-//    implementation(bom)
-//    androidTestImplementation(bom)
 
 
     implementation(project(":core:common"))

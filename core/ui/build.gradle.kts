@@ -42,19 +42,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    val bom = platform(libs.compose.bom)
-    implementation(bom)
-    androidTestImplementation(bom)
-    api("androidx.compose.compiler:compiler:1.3.2")
-    api("androidx.compose.foundation:foundation:1.2.0-rc02")
-    debugApi("androidx.compose.ui:ui-tooling:1.2.0-rc02")
-    api("androidx.compose.ui:ui-tooling-preview:1.2.0-rc02")
-    api("androidx.compose.material:material-icons-core")
-    api("androidx.compose.material3:material3-window-size-class")
-    api("androidx.compose.runtime:runtime")
-    api("androidx.compose.runtime:runtime-livedata")
-
-
     api(libs.navigation.compose)
-
+    api(libs.material3)
 }

@@ -1,37 +1,18 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("todoList.android.feature")
     id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.example.edit"
-    compileSdk = 33
 
     buildFeatures {
         viewBinding = true
-        compose = true
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-rc02"
-    }
 }
 
 dependencies {
-
-    val bom = platform(libs.compose.bom)
-    implementation(bom)
-    androidTestImplementation(bom)
 
     implementation(project(":core:ui"))
     implementation(project(":core:common"))
@@ -53,4 +34,6 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    implementation(libs.viewModel.compose)
+    implementation(libs.hilt.navigation.compose)
 }

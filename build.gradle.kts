@@ -2,15 +2,16 @@
 
 buildscript {
     dependencies {
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.1")
         classpath(libs.navigation.safe.args)
     }
 }
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application") version "7.3.1" apply false
-    id("com.android.library") version "7.3.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.6.21" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.hilt) apply false
 }
 
 tasks.register<Delete>("clean") {

@@ -1,17 +1,14 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("todolist.android.application")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
-    compileSdk = 33
 
-    defaultConfig {
+    namespace = "com.example.todolist"
+
+     defaultConfig {
         applicationId = "jp.gr.java_conf.fumitsuki_todo"
-        minSdk = 24
-        targetSdk = 33
         versionCode = 3
         versionName = "1.0.0"
 
@@ -34,22 +31,19 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 
     buildFeatures {
         viewBinding = true
-        compose = true
+        //compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-rc02"
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.2.0-rc02"
+//    }
 }
 
 dependencies {
@@ -65,15 +59,15 @@ dependencies {
 
 
     //jetpack compose 関連
-    implementation(libs.activity.compose)
+    //implementation(libs.activity.compose)
 
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    val bom = platform(libs.compose.bom)
-    implementation(bom)
-    androidTestImplementation(bom)
+//    val bom = platform(libs.compose.bom)
+//    implementation(bom)
+//    androidTestImplementation(bom)
 
 
     implementation(project(":core:common"))

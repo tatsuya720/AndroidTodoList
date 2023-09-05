@@ -1,6 +1,6 @@
 plugins {
     id("todolist.android.application")
-    id("com.google.dagger.hilt.android")
+    id("todolist.android.hilt")
 }
 
 android {
@@ -51,15 +51,8 @@ dependencies {
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)
 
-
-
     //jetpack compose 関連
-    //implementation(libs.activity.compose)
-
-
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-
+    implementation(libs.activity.compose)
 
     implementation(project(":core:common"))
     implementation(project(":core:data"))

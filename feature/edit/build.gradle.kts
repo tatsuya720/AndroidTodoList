@@ -1,7 +1,6 @@
 plugins {
     id("todolist.android.feature")
     id("todolist.android.library.compose")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -23,18 +22,12 @@ dependencies {
 
     implementation(libs.constraintlayout)
     implementation(libs.coordinatorlayout)
-    implementation(libs.fragment.ktx)
-    implementation(libs.activity.ktx)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation(libs.coroutine)
-    implementation(libs.viewModel.ktx)
+//    implementation(libs.fragment.ktx)
+//    implementation(libs.activity.ktx)
+//    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+//    implementation(libs.coroutine)
+//    implementation(libs.viewModel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)
-
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-
-    implementation(libs.viewModel.compose)
-    implementation(libs.hilt.navigation.compose)
 }

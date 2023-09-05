@@ -25,7 +25,6 @@ dependencyResolutionManagement {
             library("fragment-ktx", "androidx.fragment", "fragment-ktx").version("1.2.2")
             library("activity-ktx", "androidx.activity", "activity-ktx").version("1.4.0")
             library("viewModel-ktx", "androidx.lifecycle","lifecycle-viewmodel-ktx").version("2.5.0")
-            library("liveData-ktx", "androidx.lifecycle", "lifecycle-livedata-ktx").version("2.5.0")
 
             version("navigation-version", "2.5.0")
             library("navigation-fragment-ktx", "androidx.navigation","navigation-fragment-ktx").versionRef("navigation-version")

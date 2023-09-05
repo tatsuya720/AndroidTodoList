@@ -27,5 +27,9 @@ gradlePlugin {
             id = "todolist.android.library.compose"
             implementationClass = "AndroidLibraryComposePlugin"
         }
+        register("androidHilt") {
+            id = "todolist.android.hilt"
+            implementationClass = "AndroidHiltPlugin"
+        }
     }
 }

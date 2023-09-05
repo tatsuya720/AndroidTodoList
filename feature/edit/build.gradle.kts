@@ -25,8 +25,6 @@ dependencies {
 //    implementation(libs.fragment.ktx)
 //    implementation(libs.activity.ktx)
 //    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-//    implementation(libs.coroutine)
-//    implementation(libs.viewModel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso)

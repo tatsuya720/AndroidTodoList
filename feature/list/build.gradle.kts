@@ -21,8 +21,6 @@ dependencies {
     implementation(project(":core:ui"))
 
     implementation(libs.constraintlayout)
-    implementation(libs.coroutine.core)
-    implementation(libs.coroutine)
     implementation(libs.viewModel.ktx)
 
     testImplementation(libs.junit)

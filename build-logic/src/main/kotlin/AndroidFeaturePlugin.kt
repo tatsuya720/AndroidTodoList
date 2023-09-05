@@ -16,6 +16,7 @@ class AndroidFeaturePlugin: Plugin<Project> {
             dependencies {
                 add("implementation", libs.findLibrary("hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("viewModel.compose").get())
+                add("implementation", libs.findLibrary("coroutine").get())
             }
 
         }
